@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { brightness, camera } from '$lib/stores/camera';
   import { gallery } from '$lib/stores/gallery';
-  import { Camera, Circle, Square } from 'lucide-svelte';
+  import { Camera, X } from 'lucide-svelte';
 
   let videoElement: HTMLVideoElement;
   let stream: MediaStream | null = null;
@@ -118,17 +118,17 @@
         <div class="absolute top-0 left-2/3 w-px h-full bg-white"></div>
     </div>
 
-    <!-- Camera Controls Overlay -->
-    <div class="absolute bottom-8 left-0 right-0 flex items-center justify-center space-x-8 z-10">
-        <!-- Stop Button -->
-        <button
-            class="w-12 h-12 flex items-center justify-center rounded-full bg-zinc-900/50 border border-zinc-500 text-zinc-300 hover:bg-zinc-900 hover:text-red-500 hover:border-red-500 transition-all backdrop-blur-sm"
-            on:click={stopCamera}
-            title="Stop Camera"
-        >
-            <Square size={16} fill="currentColor" />
-        </button>
+    <!-- Stop Button (Top Left) -->
+    <button
+        class="absolute top-4 left-4 w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900/50 border border-zinc-500 text-zinc-300 hover:bg-zinc-900 hover:text-red-500 hover:border-red-500 transition-all backdrop-blur-sm z-20"
+        on:click={stopCamera}
+        title="Stop Camera"
+    >
+        <X size={18} />
+    </button>
 
+    <!-- Camera Controls Overlay (Bottom Center) -->
+    <div class="absolute bottom-8 left-0 right-0 flex items-center justify-center z-10">
         <!-- Shutter Button -->
         <button
             class="w-20 h-20 rounded-full border-4 border-white/80 flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
@@ -136,9 +136,6 @@
         >
             <div class="w-16 h-16 rounded-full bg-white"></div>
         </button>
-
-        <!-- Spacer for balance -->
-        <div class="w-12 h-12"></div>
     </div>
   {/if}
 </div>

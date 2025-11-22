@@ -23,3 +23,4 @@ function createGalleryStore() {
 }
 
 export const gallery = createGalleryStore();
+export const activePhoto = writable<Photo | null>(null);
