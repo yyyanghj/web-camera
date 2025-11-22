@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { activePhoto } from '$lib/stores/gallery';
+    import { gallery } from '$lib/stores/gallery.svelte';
     import Section from '$lib/components/Section.svelte';
 </script>
 

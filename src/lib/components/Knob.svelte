@@ -1,25 +1,31 @@
 <script lang="ts">
-    import { createEventDispatcher } from 'svelte';
-    import { cn } from '$lib/utils/cn'; // We need to create this util or use clsx directly
+    import { cn } from '$lib/utils/cn';
 
-    export let label: string;
-    export let value: number;
-    export let options: number[];
-    export let format: (v: number) => string = (v) => v.toString();
-
-    const dispatch = createEventDispatcher<{ change: number }>();
+    let {
+        label,
+        value,
+        options,
+        format = (v: number) => v.toString(),
+        onChange
+    } = $props<{
+        label: string;
+        value: number;
+        options: number[];
+        format?: (v: number) => string;
+        onChange?: (v: number) => void;
+    }>();
 
     function next() {
         const idx = options.indexOf(value);
         if (idx < options.length - 1) {
-            dispatch('change', options[idx + 1]);
+            onChange?.(options[idx + 1]);
         }
     }
 
     function prev() {
         const idx = options.indexOf(value);
         if (idx > 0) {
-            dispatch('change', options[idx - 1]);
+            onChange?.(options[idx - 1]);
         }
     }
 </script>
@@ -33,7 +39,7 @@
     <div class="flex items-center border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
         <button
             class="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed border-r border-zinc-200 dark:border-zinc-800"
-            on:click={prev}
+            onclick={prev}
             disabled={value === options[0]}
         >
             -
@@ -47,7 +53,7 @@
 
         <button
             class="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed border-l border-zinc-200 dark:border-zinc-800"
-            on:click={next}
+            onclick={next}
             disabled={value === options[options.length - 1]}
         >
             +

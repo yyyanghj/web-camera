@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let title: string;
+    let { title } = $props<{ title: string }>();
 </script>
 
 <div class="w-full border-b border-zinc-200 dark:border-zinc-800 last:border-b-0">
