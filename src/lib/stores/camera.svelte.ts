@@ -1,64 +1,57 @@
-export interface CameraState {
-    iso: number;
-    aperture: number;
-    shutterSpeed: number;
-    focalLength: number;
+function createCameraStore() {
+    // State
+    let iso = $state(400);
+    let aperture = $state(2.8);
+    let shutterSpeed = $state(500);
+    let focalLength = $state(24); // Default 24mm (1x)
+
+    const baseFocalLength = 24;
+
+    // Derived values
+    // shutterSpeed is stored as reciprocal (e.g., 125 for 1/125s, 0.5 for 2s)
+    // Formula: EV = log2(N^2 * S * 100/ISO)
+    let exposureValue = $derived(Math.log2((aperture ** 2) * shutterSpeed * (100 / iso)));
+
+    // Target EV for "correct" exposure (e.g., sunny day ~15, indoor ~7)
+    // Let's assume a target EV of around 10 for this simulation
+    const targetEV = 10;
+
+    // Meter Reading (Scene EV - Settings EV)
+    // If Scene is 10, Settings is 10 -> 0 (Correct)
+    // If Scene is 10, Settings is 11 (Darker settings) -> -1 (Underexposed)
+    // If Scene is 10, Settings is 9 (Brighter settings) -> +1 (Overexposed)
+    let meterReading = $derived(targetEV - exposureValue);
+
+    // Brightness simulation
+    let brightness = $derived(Math.pow(2, meterReading));
+
+    // Zoom factor
+    let zoom = $derived(focalLength / baseFocalLength);
+
+    return {
+        get iso() { return iso; },
+        set iso(v) { iso = v; },
+
+        get aperture() { return aperture; },
+        set aperture(v) { aperture = v; },
+
+        get shutterSpeed() { return shutterSpeed; },
+        set shutterSpeed(v) { shutterSpeed = v; },
+
+        get focalLength() { return focalLength; },
+        set focalLength(v) { focalLength = v; },
+
+        get exposureValue() { return parseFloat(exposureValue.toFixed(2)); },
+        get meterReading() {
+            // Snap to nearest 1/3 EV
+            // 0, 1/3, 2/3, 1, 4/3, etc.
+            const raw = meterReading;
+            const stepped = Math.round(raw * 3) / 3;
+            return parseFloat(stepped.toFixed(2));
+        },
+        get brightness() { return brightness; },
+        get zoom() { return zoom; }
+    };
 }
 
-class CameraStore {
-    state = $state<CameraState>({
-        iso: 400,
-        aperture: 2.8,
-        shutterSpeed: 125,
-        focalLength: 24
-    });
-
-    setIso(iso: number) { this.state.iso = iso; }
-    setAperture(aperture: number) { this.state.aperture = aperture; }
-    setShutterSpeed(speed: number) { this.state.shutterSpeed = speed; }
-    setFocalLength(length: number) { this.state.focalLength = length; }
-
-    reset() {
-        this.state.iso = 400;
-        this.state.aperture = 2.8;
-        this.state.shutterSpeed = 125;
-        this.state.focalLength = 24;
-    }
-
-    get iso() { return this.state.iso; }
-    set iso(v: number) { this.state.iso = v; }
-
-    get aperture() { return this.state.aperture; }
-    set aperture(v: number) { this.state.aperture = v; }
-
-    get shutterSpeed() { return this.state.shutterSpeed; }
-    set shutterSpeed(v: number) { this.state.shutterSpeed = v; }
-
-    get focalLength() { return this.state.focalLength; }
-    set focalLength(v: number) { this.state.focalLength = v; }
-
-    get exposureValue() {
-        const N = this.state.aperture;
-        const t = 1 / this.state.shutterSpeed;
-        const iso = this.state.iso;
-
-        const ev100 = Math.log2((N * N) / t);
-        const ev = ev100 - Math.log2(iso / 100);
-
-        return parseFloat(ev.toFixed(2));
-    }
-
-    get brightness() {
-        const baseIso = 400;
-        const baseAperture = 2.8;
-        const baseShutter = 125;
-
-        const isoFactor = this.state.iso / baseIso;
-        const apertureFactor = (baseAperture * baseAperture) / (this.state.aperture * this.state.aperture);
-        const shutterFactor = baseShutter / this.state.shutterSpeed;
-
-        return isoFactor * apertureFactor * shutterFactor;
-    }
-}
-
-export const camera = new CameraStore();
+export const camera = createCameraStore();

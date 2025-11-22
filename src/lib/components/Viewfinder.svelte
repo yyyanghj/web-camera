@@ -10,7 +10,7 @@
     let isStarted = $state(false);
     let error: string | null = $state(null);
 
-    // Effect to apply filters when camera settings change
+    // Effect to apply filters and zoom when camera settings change
     $effect(() => {
         if (videoElement) {
             // Apply brightness filter based on simulation
@@ -18,6 +18,8 @@
             // CSS filter brightness(1) is normal.
             // We can map our brightness factor directly.
             videoElement.style.filter = `brightness(${camera.brightness})`;
+            // Apply zoom via scale transform
+            videoElement.style.transform = `scale(${camera.zoom})`;
         }
     });
 
@@ -50,6 +52,7 @@
         }
         if (videoElement) {
             videoElement.srcObject = null;
+            videoElement.style.transform = 'none'; // Reset transform
         }
         isStarted = false;
     }
@@ -57,18 +60,32 @@
     function capturePhoto() {
         if (!videoElement || !canvasElement || !isStarted) return;
 
-        const width = videoElement.videoWidth;
-        const height = videoElement.videoHeight;
+        const videoWidth = videoElement.videoWidth;
+        const videoHeight = videoElement.videoHeight;
 
-        canvasElement.width = width;
-        canvasElement.height = height;
+        // The canvas size should match the video resolution
+        canvasElement.width = videoWidth;
+        canvasElement.height = videoHeight;
 
         const ctx = canvasElement.getContext('2d');
         if (ctx) {
-            // Draw the video frame
+            // Calculate crop area for zoom
+            // If zoom is 2x, we need to take the center 1/2 of the video
+            const zoom = camera.zoom;
+            const cropWidth = videoWidth / zoom;
+            const cropHeight = videoHeight / zoom;
+            const cropX = (videoWidth - cropWidth) / 2;
+            const cropY = (videoHeight - cropHeight) / 2;
+
             // Apply the same brightness filter to the context
             ctx.filter = `brightness(${camera.brightness})`;
-            ctx.drawImage(videoElement, 0, 0, width, height);
+
+            // Draw the cropped (zoomed) area to fill the canvas
+            ctx.drawImage(
+                videoElement,
+                cropX, cropY, cropWidth, cropHeight, // Source crop
+                0, 0, videoWidth, videoHeight // Destination (full canvas)
+            );
 
             // Reset filter
             ctx.filter = 'none';
