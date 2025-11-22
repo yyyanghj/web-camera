@@ -38,39 +38,20 @@ export const exposureValue = derived(camera, ($camera) => {
     const ev100 = Math.log2((N * N) / t);
     const ev = ev100 - Math.log2(iso / 100);
 
-    return ev;
+    return parseFloat(ev.toFixed(2));
 });
 
 // Brightness factor for CSS filter (1 is normal, <1 darker, >1 brighter)
 // We assume EV 13 (sunny day) is "normal" exposure for the camera feed
-export const brightness = derived(exposureValue, ($ev) => {
-    const targetEV = 13;
-    // This is a simplified simulation.
-    // If calculated EV is lower than target (scene is darker/settings let in less light), image should be darker?
-    // Wait, EV is "Exposure Value" setting.
-    // Lower EV setting = More Light (High ISO, Wide Aperture, Slow Shutter) -> Brighter Image
-    // Higher EV setting = Less Light -> Darker Image
-
-    // Let's inverse logic for simulation:
-    // We want to simulate the *result* image brightness.
-    // Standard exposure: ISO 100, f/16, 1/125s (Sunny 16) -> EV ~15
-    // Let's say the webcam feed is "perfectly exposed" at auto settings.
-    // We treat the webcam feed as our baseline.
-    // If user increases ISO -> Brightness UP
-    // If user opens aperture (lower f-number) -> Brightness UP
-    // If user slows shutter (lower denominator) -> Brightness UP
-
+export const brightness = derived(camera, ($camera) => {
     // Baseline: ISO 400, f/2.8, 1/125s
     const baseIso = 400;
     const baseAperture = 2.8;
     const baseShutter = 125;
 
-    return (camera) => {
-        const isoFactor = camera.iso / baseIso;
-        const apertureFactor = (baseAperture * baseAperture) / (camera.aperture * camera.aperture);
-        const shutterFactor = baseShutter / camera.shutterSpeed;
+    const isoFactor = $camera.iso / baseIso;
+    const apertureFactor = (baseAperture * baseAperture) / ($camera.aperture * $camera.aperture);
+    const shutterFactor = baseShutter / $camera.shutterSpeed;
 
-        // Logarithmic perception adjustment could be added here, but linear is fine for simple sim
-        return isoFactor * apertureFactor * shutterFactor;
-    };
+    return isoFactor * apertureFactor * shutterFactor;
 });

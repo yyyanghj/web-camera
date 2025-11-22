@@ -7,6 +7,10 @@
   const apertureOptions = [1.4, 2.0, 2.8, 4.0, 5.6, 8.0, 11, 16];
   const shutterOptions = [8000, 4000, 2000, 1000, 500, 250, 125, 60, 30, 15, 8, 4, 2, 1];
 
+  function formatAperture(v: number) {
+      return `f/${v}`;
+  }
+
   function formatShutter(v: number) {
       return v >= 1 ? `1/${v}` : `${1/v}"`;
   }
@@ -26,7 +30,7 @@
               value={$camera.aperture}
               options={apertureOptions}
               label="Aperture"
-              format={(v) => `f/${v}`}
+              format={formatAperture}
               on:change={(e) => camera.setAperture(e.detail)}
           />
 
