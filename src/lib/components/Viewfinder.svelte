@@ -10,14 +10,26 @@
     let isStarted = $state(false);
     let error: string | null = $state(null);
 
+    const filters: Record<string, string> = {
+        'Standard': 'none',
+        'B&W': 'grayscale(100%) contrast(120%)',
+        'Vintage': 'sepia(40%) contrast(110%) brightness(110%) saturate(80%)',
+        'Cool': 'saturate(80%) contrast(110%) hue-rotate(180deg)',
+        'Warm': 'sepia(30%) saturate(120%) contrast(110%)'
+    };
+
     // Effect to apply filters and zoom when camera settings change
     $effect(() => {
         if (videoElement) {
             // Apply brightness filter based on simulation
-            // brightness is 1.0 for normal.
-            // CSS filter brightness(1) is normal.
-            // We can map our brightness factor directly.
-            videoElement.style.filter = `brightness(${camera.brightness})`;
+            // Combine with selected film simulation filter
+            const brightnessFilter = `brightness(${camera.brightness})`;
+            const selectedFilter = filters[camera.filter];
+            const filmFilter = selectedFilter && selectedFilter !== 'none' ? selectedFilter : '';
+
+            // Combine filters: brightness first, then film simulation
+            videoElement.style.filter = `${brightnessFilter} ${filmFilter}`.trim();
+
             // Apply zoom via scale transform
             videoElement.style.transform = `scale(${camera.zoom})`;
         }
@@ -77,8 +89,11 @@
             const cropX = (videoWidth - cropWidth) / 2;
             const cropY = (videoHeight - cropHeight) / 2;
 
-            // Apply the same brightness filter to the context
-            ctx.filter = `brightness(${camera.brightness})`;
+            // Apply filters
+            const brightnessFilter = `brightness(${camera.brightness})`;
+            const selectedFilter = filters[camera.filter];
+            const filmFilter = selectedFilter && selectedFilter !== 'none' ? selectedFilter : '';
+            ctx.filter = `${brightnessFilter} ${filmFilter}`.trim();
 
             // Draw the cropped (zoomed) area to fill the canvas
             ctx.drawImage(

@@ -4,6 +4,7 @@ function createCameraStore() {
     let aperture = $state(2.8);
     let shutterSpeed = $state(500);
     let focalLength = $state(24); // Default 24mm (1x)
+    let filter = $state('Standard'); // Default filter
 
     const baseFocalLength = 24;
 
@@ -40,6 +41,9 @@ function createCameraStore() {
 
         get focalLength() { return focalLength; },
         set focalLength(v) { focalLength = v; },
+
+        get filter() { return filter; },
+        set filter(v) { filter = v; },
 
         get exposureValue() { return parseFloat(exposureValue.toFixed(2)); },
         get meterReading() {

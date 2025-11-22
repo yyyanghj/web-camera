@@ -1,18 +1,18 @@
-<script lang="ts">
+<script lang="ts" generics="T">
     import { cn } from '$lib/utils/cn';
 
     let {
         label,
         value,
         options,
-        format = (v: number) => v.toString(),
+        format = (v: T) => String(v),
         onChange
     } = $props<{
         label: string;
-        value: number;
-        options: number[];
-        format?: (v: number) => string;
-        onChange?: (v: number) => void;
+        value: T;
+        options: T[];
+        format?: (v: T) => string;
+        onChange?: (v: T) => void;
     }>();
 
     function next() {
@@ -38,7 +38,7 @@
 
     <div class="flex items-center border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
         <button
-            class="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed border-r border-zinc-200 dark:border-zinc-800"
+            class="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed border-r border-zinc-200 dark:border-zinc-800"
             onclick={prev}
             disabled={value === options[0]}
         >
@@ -52,7 +52,7 @@
         </div>
 
         <button
-            class="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed border-l border-zinc-200 dark:border-zinc-800"
+            class="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed border-l border-zinc-200 dark:border-zinc-800"
             onclick={next}
             disabled={value === options[options.length - 1]}
         >

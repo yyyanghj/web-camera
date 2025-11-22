@@ -71,6 +71,17 @@
       </div>
   </Section>
 
+  <Section title="Film Simulation">
+      <div class="flex flex-col space-y-6">
+          <Knob
+              label="Profile"
+              value={camera.filter}
+              options={['Standard', 'B&W', 'Vintage', 'Cool', 'Warm']}
+              onChange={(v) => camera.filter = v}
+          />
+      </div>
+  </Section>
+
   <Section title="Meter">
       <div class="grid grid-cols-2 gap-4">
           <div class="p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
