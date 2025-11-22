@@ -1,10 +1,14 @@
 # Web Camera
 
+> 🚧 This project is still in development.
+
 A minimalist, web-based camera simulator designed to help photography beginners understand the exposure triangle and other fundamental concepts.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Svelte](https://img.shields.io/badge/svelte-%23f1413d.svg?style=flat&logo=svelte&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)
+
+![Web Camera](./resources/screenshot.png)
 
 ## 📸 Features
 
@@ -55,10 +59,10 @@ A minimalist, web-based camera simulator designed to help photography beginners 
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## � Credits
+## Credits
 
 - **AI Assistant**: Developed with the assistance of [Antigravity](https://deepmind.google/technologies/gemini/), an advanced AI coding agent by Google DeepMind.
 
-## �📄 License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
