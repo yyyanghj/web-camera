@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+  --color-zinc-950: #09090b;
+  --color-zinc-900: #18181b;
+  --color-zinc-800: #27272a;
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-200 font-mono antialiased;
+}
