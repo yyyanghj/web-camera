@@ -39,6 +39,7 @@
               value={camera.iso}
               options={isoOptions}
               onChange={(v) => camera.iso = v}
+              tooltip="Sensitivity to light. Higher values (e.g., 6400) are brighter but add grain/noise."
           />
 
           <Knob
@@ -47,6 +48,7 @@
               options={apertureOptions}
               format={formatAperture}
               onChange={(v) => camera.aperture = v}
+              tooltip="Lens opening size. Lower f-numbers (e.g., f/1.4) let in more light and blur the background."
           />
 
           <Knob
@@ -55,6 +57,7 @@
               options={shutterOptions}
               format={formatShutter}
               onChange={(v) => camera.shutterSpeed = v}
+              tooltip="Exposure time. Faster speeds (e.g., 1/1000) freeze motion; slower speeds (e.g., 1/30) blur motion."
           />
       </div>
   </Section>
@@ -67,6 +70,7 @@
               options={[24, 35, 50, 85, 105, 200]}
               format={(v) => `${v}mm`}
               onChange={(v) => camera.focalLength = v}
+              tooltip="Zoom level. Higher values (telephoto) zoom in; lower values (wide) show more of the scene."
           />
       </div>
   </Section>

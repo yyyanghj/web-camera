@@ -1,17 +1,21 @@
 <script lang="ts" generics="T">
     import { cn } from '$lib/utils/cn';
+    import Tooltip from './Tooltip.svelte';
+    import { Info } from 'lucide-svelte';
 
     let {
         label,
         value,
         options,
         format = (v: T) => String(v),
+        tooltip,
         onChange
     } = $props<{
         label: string;
         value: T;
         options: T[];
         format?: (v: T) => string;
+        tooltip?: string;
         onChange?: (v: T) => void;
     }>();
 
@@ -32,7 +36,14 @@
 
 <div class="flex flex-col w-full select-none">
     <div class="flex items-center justify-between mb-1">
-        <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-mono">{label}</span>
+        <div class="flex items-center gap-1.5">
+            <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-mono">{label}</span>
+            {#if tooltip}
+                <Tooltip text={tooltip}>
+                    <Info class="w-3 h-3 text-zinc-400 hover:text-zinc-600 dark:text-zinc-600 dark:hover:text-zinc-400 transition-colors cursor-help" />
+                </Tooltip>
+            {/if}
+        </div>
         <span class="font-mono text-sm text-zinc-900 dark:text-zinc-100">{format(value)}</span>
     </div>
 
