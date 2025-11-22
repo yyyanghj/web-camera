@@ -127,21 +127,21 @@
     });
 </script>
 
-<div class="w-full h-full bg-black relative overflow-hidden flex items-center justify-center">
+<div class="w-full h-full bg-bg-secondary relative overflow-hidden flex items-center justify-center">
     <!-- Hidden Canvas for Capture -->
     <canvas bind:this={canvasElement} class="hidden"></canvas>
 
     {#if !isStarted}
         <div class="text-center space-y-4 z-10">
-            <div class="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center mx-auto border border-zinc-800 text-zinc-500">
+            <div class="w-16 h-16 bg-bg-tertiary rounded-full flex items-center justify-center mx-auto border border-border-primary text-text-secondary">
                 <Camera size={32} />
             </div>
-            <h2 class="text-zinc-300 font-mono text-sm">Camera Stopped</h2>
+            <h2 class="text-text-primary font-mono text-sm">Camera Stopped</h2>
             {#if error}
-                <p class="text-red-500 text-xs font-mono max-w-xs mx-auto">{error}</p>
+                <p class="text-danger text-xs font-mono max-w-xs mx-auto">{error}</p>
             {/if}
             <button
-                class="px-6 py-2 bg-zinc-100 text-zinc-900 font-mono text-sm rounded-full hover:bg-white transition-colors"
+                class="px-6 py-2 bg-bg-inverse text-text-inverse font-mono text-sm rounded-full hover:opacity-90 transition-opacity"
                 onclick={startCamera}
             >
                 Start Camera
@@ -185,7 +185,7 @@
 
         <!-- Stop Button (Top Left) -->
         <button
-            class="absolute top-4 left-4 w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900/50 border border-zinc-500 text-zinc-300 hover:bg-zinc-900 hover:text-red-500 hover:border-red-500 transition-all backdrop-blur-sm z-20"
+            class="absolute top-4 left-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 border border-white/50 text-white hover:bg-black hover:text-danger hover:border-danger transition-all backdrop-blur-sm z-20"
             onclick={stopCamera}
             title="Stop Camera"
         >

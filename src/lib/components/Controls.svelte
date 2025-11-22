@@ -88,14 +88,14 @@
 
   <Section title="Meter">
       <div class="grid grid-cols-2 gap-4">
-          <div class="p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <div class="text-[10px] text-zinc-500 mb-1 font-mono">M.M.</div>
-              <div class="text-lg font-mono text-zinc-900 dark:text-zinc-100">
+          <div class="p-3 bg-bg-secondary border border-border-primary">
+              <div class="text-[10px] text-text-secondary mb-1 font-mono">M.M.</div>
+              <div class="text-lg font-mono text-text-primary">
                 {formatMeterReading(camera.meterReading)} EV
               </div>
           </div>
-          <div class="p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <div class="text-[10px] text-zinc-500 mb-1 font-mono">BRIGHTNESS</div>
+          <div class="p-3 bg-bg-secondary border border-border-primary">
+              <div class="text-[10px] text-text-secondary mb-1 font-mono">BRIGHTNESS</div>
               <div class="text-lg font-mono">{Math.round(camera.brightness * 100)}%</div>
           </div>
       </div>

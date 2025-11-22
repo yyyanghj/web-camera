@@ -37,19 +37,19 @@
 <div class="flex flex-col w-full select-none">
     <div class="flex items-center justify-between mb-1">
         <div class="flex items-center gap-1.5">
-            <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-mono">{label}</span>
+            <span class="text-[10px] uppercase tracking-widest text-text-secondary font-mono">{label}</span>
             {#if tooltip}
                 <Tooltip text={tooltip}>
-                    <Info class="w-3 h-3 text-zinc-400 hover:text-zinc-600 dark:text-zinc-600 dark:hover:text-zinc-400 transition-colors cursor-help" />
+                    <Info class="w-3 h-3 text-text-secondary hover:text-text-primary transition-colors cursor-help" />
                 </Tooltip>
             {/if}
         </div>
-        <span class="font-mono text-sm text-zinc-900 dark:text-zinc-100">{format(value)}</span>
+        <span class="font-mono text-sm text-text-primary">{format(value)}</span>
     </div>
 
-    <div class="flex items-center border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
+    <div class="flex items-center border border-border-primary bg-bg-secondary">
         <button
-            class="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed border-r border-zinc-200 dark:border-zinc-800"
+            class="w-8 h-8 flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-bg-tertiary transition-colors disabled:opacity-30 disabled:cursor-not-allowed border-r border-border-primary"
             onclick={prev}
             disabled={value === options[0]}
         >
@@ -58,12 +58,12 @@
 
         <div class="flex-1 h-8 flex items-center justify-center relative overflow-hidden group cursor-ew-resize">
             <!-- Visual indicator bar could go here -->
-            <div class="absolute inset-0 bg-zinc-200 dark:bg-zinc-800 origin-left transition-transform duration-200" style="transform: scaleX({(options.indexOf(value) + 1) / options.length})"></div>
-            <span class="relative z-10 text-xs font-mono text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">{format(value)}</span>
+            <div class="absolute inset-0 bg-border-secondary origin-left transition-transform duration-200" style="transform: scaleX({(options.indexOf(value) + 1) / options.length})"></div>
+            <span class="relative z-10 text-xs font-mono text-text-secondary group-hover:text-text-primary transition-colors">{format(value)}</span>
         </div>
 
         <button
-            class="w-8 h-8 flex items-center justify-center text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors disabled:opacity-30 disabled:cursor-not-allowed border-l border-zinc-200 dark:border-zinc-800"
+            class="w-8 h-8 flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-bg-tertiary transition-colors disabled:opacity-30 disabled:cursor-not-allowed border-l border-border-primary"
             onclick={next}
             disabled={value === options[options.length - 1]}
         >
