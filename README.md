@@ -1,38 +1,64 @@
-# sv
+# Web Camara
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A minimalist, web-based camera simulator designed to help photography beginners understand the exposure triangle and other fundamental concepts.
 
-## Creating a project
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Svelte](https://img.shields.io/badge/svelte-%23f1413d.svg?style=flat&logo=svelte&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## 📸 Features
 
-```sh
-# create a new project in the current directory
-npx sv create
+- **Simulated Camera Controls**: Experiment with ISO, Aperture, Shutter Speed, and Focal Length in a safe, virtual environment.
+- **Educational Tooltips**: Hover over controls to learn what they do and how they affect your image.
+- **Real-time Feedback**: See instant visual changes (simulated) as you adjust settings.
+- **Minimalist Design**: A clean, distraction-free interface focused on learning.
+- **Responsive**: Works beautifully on desktop and tablet devices.
 
-# create a new project in my-app
-npx sv create my-app
-```
+## 🛠️ Tech Stack
 
-## Developing
+- **Framework**: [Svelte 5](https://svelte.dev) & [SvelteKit](https://kit.svelte.dev)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com)
+- **Icons**: [Lucide Svelte](https://lucide.dev)
+- **Language**: TypeScript
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## 🚀 Getting Started
 
-```sh
-npm run dev
+### Prerequisites
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- Node.js (v18 or later recommended)
+- pnpm (recommended) or npm/yarn
 
-## Building
+### Installation
 
-To create a production version of your app:
+1. Clone the repository:
 
-```sh
-npm run build
-```
+   ```bash
+   git clone https://github.com/yourusername/web-camara.git
+   cd web-camara
+   ```
 
-You can preview the production build with `npm run preview`.
+2. Install dependencies:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+   ```bash
+   pnpm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173` to start shooting!
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## � Credits
+
+- **AI Assistant**: Developed with the assistance of [Antigravity](https://deepmind.google/technologies/gemini/), an advanced AI coding agent by Google DeepMind.
+
+## �📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
