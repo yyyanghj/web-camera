@@ -18,6 +18,11 @@
 
   --color-accent: var(--accent);
   --color-danger: var(--danger);
+
+  /* Overlay Colors (Always High Contrast) */
+  --color-bg-overlay: var(--bg-overlay);
+  --color-text-overlay: var(--text-overlay);
+  --color-border-overlay: var(--border-overlay);
 }
 
 :root {
@@ -36,6 +41,11 @@
 
   --accent: #18181b; /* zinc-900 */
   --danger: #ef4444; /* red-500 */
+
+  /* Overlays */
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --text-overlay: #ffffff;
+  --border-overlay: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -55,6 +65,11 @@
 
     --accent: #f4f4f5; /* zinc-100 */
     --danger: #ef4444; /* red-500 */
+
+    /* Overlays (Same in Dark Mode) */
+    --bg-overlay: rgba(0, 0, 0, 0.5);
+    --text-overlay: #ffffff;
+    --border-overlay: #ffffff;
   }
 }
 
@@ -74,6 +89,11 @@
 
   --accent: #f4f4f5; /* zinc-100 */
   --danger: #ef4444; /* red-500 */
+
+  /* Overlays */
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --text-overlay: #ffffff;
+  --border-overlay: #ffffff;
 }
 
 body {

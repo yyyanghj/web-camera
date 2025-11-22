@@ -165,19 +165,19 @@
         <!-- Grid Overlay -->
         <div class="absolute inset-0 pointer-events-none opacity-30">
             <div class="w-full h-full border-collapse flex flex-col">
-                <div class="flex-1 flex border-b border-white/50">
-                    <div class="flex-1 border-r border-white/50"></div>
-                    <div class="flex-1 border-r border-white/50"></div>
+                <div class="flex-1 flex border-b border-border-overlay/50">
+                    <div class="flex-1 border-r border-border-overlay/50"></div>
+                    <div class="flex-1 border-r border-border-overlay/50"></div>
                     <div class="flex-1"></div>
                 </div>
-                <div class="flex-1 flex border-b border-white/50">
-                    <div class="flex-1 border-r border-white/50"></div>
-                    <div class="flex-1 border-r border-white/50"></div>
+                <div class="flex-1 flex border-b border-border-overlay/50">
+                    <div class="flex-1 border-r border-border-overlay/50"></div>
+                    <div class="flex-1 border-r border-border-overlay/50"></div>
                     <div class="flex-1"></div>
                 </div>
                 <div class="flex-1 flex">
-                    <div class="flex-1 border-r border-white/50"></div>
-                    <div class="flex-1 border-r border-white/50"></div>
+                    <div class="flex-1 border-r border-border-overlay/50"></div>
+                    <div class="flex-1 border-r border-border-overlay/50"></div>
                     <div class="flex-1"></div>
                 </div>
             </div>
@@ -185,7 +185,7 @@
 
         <!-- Stop Button (Top Left) -->
         <button
-            class="absolute top-4 left-4 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 border border-white/50 text-white hover:bg-black hover:text-danger hover:border-danger transition-all backdrop-blur-sm z-20"
+            class="absolute top-0 left-0 w-10 h-10 flex items-center justify-center rounded-none bg-bg-overlay border border-border-overlay/50 text-text-overlay hover:bg-black hover:text-text-overlay hover:border-border-overlay transition-all backdrop-blur-sm z-20"
             onclick={stopCamera}
             title="Stop Camera"
         >
@@ -195,7 +195,7 @@
         <!-- Shutter Button -->
         <div class="absolute bottom-8 left-0 right-0 flex justify-center z-20">
             <button
-                class="w-16 h-16 rounded-full border-4 border-white bg-transparent hover:bg-white/20 transition-all active:scale-95 flex items-center justify-center"
+                class="w-16 h-16 rounded-full border-4 border-border-overlay bg-transparent hover:bg-white/20 transition-all active:scale-95 flex items-center justify-center"
                 onclick={capturePhoto}
                 title="Capture Photo"
             >
