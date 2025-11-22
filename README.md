@@ -1,4 +1,4 @@
-# Web Camara
+# Web Camera
 
 A minimalist, web-based camera simulator designed to help photography beginners understand the exposure triangle and other fundamental concepts.
 
@@ -33,8 +33,8 @@ A minimalist, web-based camera simulator designed to help photography beginners 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/web-camara.git
-   cd web-camara
+   git clone https://github.com/yyyanghj/web-camera.git
+   cd web-camera
    ```
 
 2. Install dependencies:

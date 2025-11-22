@@ -1,9 +1,11 @@
 # Project Context for AI Agents
 
 ## 📸 Project Overview
-**Web Camara** is a web-based camera simulator designed to help photography beginners understand the exposure triangle (ISO, Aperture, Shutter Speed) and other fundamental concepts. It provides a safe, virtual environment to experiment with camera settings and see simulated real-time results.
+
+**Web Camera** is a web-based camera simulator designed to help photography beginners understand the exposure triangle (ISO, Aperture, Shutter Speed) and other fundamental concepts. It provides a safe, virtual environment to experiment with camera settings and see simulated real-time results.
 
 ## 🛠️ Tech Stack
+
 - **Framework**: Svelte 5 (Runes mode) & SvelteKit
 - **Styling**: Tailwind CSS 4 (Native, no config required for standard usage)
 - **Language**: TypeScript
@@ -11,6 +13,7 @@
 - **Testing**: Vitest & Playwright (if applicable)
 
 ## 📂 Directory Structure
+
 - **`src/lib/components`**: Reusable UI components (e.g., `CameraControls`, `Viewfinder`).
 - **`src/lib/stores`**: Global state management (using Svelte 5 `$state` or `svelte/store` if legacy).
 - **`src/lib/utils`**: Helper functions and logic (e.g., exposure calculations).
@@ -18,6 +21,7 @@
 - **`static`**: Static assets (images, fonts).
 
 ## 📝 Coding Conventions
+
 - **Reactivity**: ALWAYS use Svelte 5 Runes (`$state`, `$derived`, `$effect`, `$props`) for new code. Avoid legacy `export let` or `$:`.
 - **Styling**: Use Tailwind CSS utility classes directly in markup. Avoid `@apply` unless necessary for complex reuse.
 - **Icons**: Import icons from `lucide-svelte`.
