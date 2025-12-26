@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import { camera } from '$lib/stores/camera.svelte';
     import { gallery } from '$lib/stores/gallery.svelte';
-    import { Camera, Grid3X3, X } from 'lucide-svelte';
+    import { Camera, X } from 'lucide-svelte';
 
     let videoElement: HTMLVideoElement;
     let canvasElement: HTMLCanvasElement;

@@ -11,7 +11,7 @@ function createCameraStore() {
     // Derived values
     // shutterSpeed is stored as reciprocal (e.g., 125 for 1/125s, 0.5 for 2s)
     // Formula: EV = log2(N^2 * S * 100/ISO)
-    let exposureValue = $derived(Math.log2((aperture ** 2) * shutterSpeed * (100 / iso)));
+    const exposureValue = $derived(Math.log2((aperture ** 2) * shutterSpeed * (100 / iso)));
 
     // Target EV for "correct" exposure (e.g., sunny day ~15, indoor ~7)
     // Let's assume a target EV of around 10 for this simulation
@@ -21,13 +21,13 @@ function createCameraStore() {
     // If Scene is 10, Settings is 10 -> 0 (Correct)
     // If Scene is 10, Settings is 11 (Darker settings) -> -1 (Underexposed)
     // If Scene is 10, Settings is 9 (Brighter settings) -> +1 (Overexposed)
-    let meterReading = $derived(targetEV - exposureValue);
+    const meterReading = $derived(targetEV - exposureValue);
 
     // Brightness simulation
-    let brightness = $derived(Math.pow(2, meterReading));
+    const brightness = $derived(Math.pow(2, meterReading));
 
     // Zoom factor
-    let zoom = $derived(focalLength / baseFocalLength);
+    const zoom = $derived(focalLength / baseFocalLength);
 
     return {
         get iso() { return iso; },

@@ -2,7 +2,6 @@
   import Knob from './Knob.svelte';
   import Section from './Section.svelte';
   import { camera } from '$lib/stores/camera.svelte';
-  import { Sun, Aperture, Timer } from 'lucide-svelte';
 
   const isoOptions = [100, 200, 400, 800, 1600, 3200, 6400];
   const apertureOptions = [1.4, 2.0, 2.8, 4.0, 5.6, 8.0, 11, 16];

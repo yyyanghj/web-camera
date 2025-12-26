@@ -1,12 +1,11 @@
 # Web Camera
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Svelte](https://img.shields.io/badge/svelte-%23f1413d.svg?style=flat&logo=svelte&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)
 
 > 🚧 This project is still in development.
 
 A minimalist, web-based camera simulator designed to help photography beginners understand the exposure triangle and other fundamental concepts.
-
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Svelte](https://img.shields.io/badge/svelte-%23f1413d.svg?style=flat&logo=svelte&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat&logo=tailwind-css&logoColor=white)
 
 ![Web Camera](./resources/screenshot.png)
 

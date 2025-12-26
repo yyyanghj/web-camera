@@ -1,5 +1,4 @@
 <script lang="ts" generics="T">
-    import { cn } from '$lib/utils/cn';
     import Tooltip from './Tooltip.svelte';
     import { Info } from 'lucide-svelte';
 

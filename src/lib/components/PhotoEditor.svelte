@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { gallery } from '$lib/stores/gallery.svelte';
     import Section from '$lib/components/Section.svelte';
 </script>
 
